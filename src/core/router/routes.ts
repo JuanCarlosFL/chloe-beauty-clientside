@@ -28,12 +28,12 @@ export const switchRoutes: SwitchRoutes = {
 };
 
 interface LinkRoutes extends BaseRoutes {
-  lolayltyList: NavigateFnId;
+  loyaltyList: NavigateFnId;
   treatmentList: NavigateFnId;
 }
 
 export const linkRoutes: LinkRoutes = {
   ...switchRoutes,
-  lolayltyList: id => generatePath(switchRoutes.loyaltyList, { id }),
+  loyaltyList: id => generatePath(switchRoutes.loyaltyList, { id }),
   treatmentList: id => generatePath(switchRoutes.treatmentList, { id }),
 };

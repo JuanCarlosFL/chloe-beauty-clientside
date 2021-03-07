@@ -7,11 +7,12 @@ import { createEmptyUser, UserEntityVM } from './menu.vm';
 
 export const MenuContainer: React.FC = () => {
   const [user, setUser] = useState<UserEntityVM>(createEmptyUser());
-  const { login } = useContext(SessionContext);
+  const { login, updatePoints } = useContext(SessionContext);
 
   const handleLoadData = async () => {
-    const data = await getUser(login);
-    const viewModel = mapUserFromApiToVm(data);
+    const apiUser = await getUser(login);
+    updatePoints(apiUser.Person.Points);
+    setUser(mapUserFromApiToVm(apiUser));
   };
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export const MenuContainer: React.FC = () => {
 
   return (
     <>
-      <MenuComponent />
+      <MenuComponent user={user} />
     </>
   );
 };

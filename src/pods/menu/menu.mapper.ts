@@ -3,16 +3,23 @@ import * as viewModel from './menu.vm';
 
 export const mapUserFromApiToVm = (
   user: apiModel.UserEntity
-): viewModel.UserEntityVM => ({
-  name: user.person.name,
-  surname: user.person.surname,
-  telephone: user.person.telephone,
-  address: user.person.address,
-  town: user.person.town,
-  postCode: user.person.postCode,
-  points: user.person.points,
-  email: user.person.email,
-  comments: user.person.comments,
-  contactHow: user.person.contactHow,
-  role: user.usersRoles.map(r => r.roleId),
-});
+): viewModel.UserEntityVM => {
+
+  if (user === undefined || user === null) {
+    return viewModel.createEmptyUser();
+  } else {
+    return {
+      name: user.Person.Name,
+      surname: user.Person.Surname,
+      telephone: user.Person.Telephone,
+      address: user.Person.Address,
+      town: user.Person.Town,
+      postCode: user.Person.PostCode,
+      points: user.Person.Points,
+      email: user.Person.Email,
+      comments: user.Person.Comments,
+      contactHow: user.Person.ContactHow,
+      role: user.UsersRoles.map(r => r.RoleId),
+    };
+  }
+};

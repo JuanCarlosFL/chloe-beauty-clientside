@@ -1,5 +1,4 @@
-import { CenteredLayout, HeaderComponent } from 'layouts';
-import { FooterComponent } from 'layouts/footer.component';
+import { CenteredLayout, FooterComponent, HeaderComponent } from 'layouts';
 import { MenuContainer } from 'pods/menu';
 import React from 'react';
 

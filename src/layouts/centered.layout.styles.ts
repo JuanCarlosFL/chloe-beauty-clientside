@@ -2,10 +2,12 @@ import { css } from '@emotion/css';
 import { theme } from 'core/theme';
 
 export const root = css`
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  min-height: 100vh;
+  margin: 0 auto;
   align-items: center;
-  margin-top: 2rem;
   @media (min-width: ${theme.breakpoints.values.sm}px) {
     justify-items: center;
   }

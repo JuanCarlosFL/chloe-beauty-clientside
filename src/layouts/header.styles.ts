@@ -8,6 +8,16 @@ export const headerFooter = css`
   justify-content: space-between;
   align-items: center;
   width: 80vw;
-  height: 10vh;
+  height: 12vh;
   margin: 0 auto;
+`;
+
+export const userData = css`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const format = css`
+  margin: 0;
+  padding: 0;
 `;
