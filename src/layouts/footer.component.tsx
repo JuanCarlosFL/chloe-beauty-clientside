@@ -6,7 +6,8 @@ export const FooterComponent: React.FC = () => {
   return (
     <div>
       <Grid container className={classes.headerFooter}>
-        <p>Username</p>
+        <p>&copy; Juan Carlos Fuentes Lamas</p>
+        <p>2021 - Mijas Costa</p>
       </Grid>
     </div>
   );
