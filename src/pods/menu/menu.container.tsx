@@ -11,8 +11,6 @@ export const MenuContainer: React.FC = () => {
 
   const handleLoadData = async () => {
     const data = await getUser(login);
-    console.log(data);
-    debugger;
     const viewModel = mapUserFromApiToVm(data);
   };
 
