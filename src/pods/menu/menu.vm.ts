@@ -1,4 +1,5 @@
 export interface UserEntityVM {
+  personId: number;
   name: string;
   surname: string;
   telephone: string;
@@ -13,6 +14,7 @@ export interface UserEntityVM {
 }
 
 export const createEmptyUser = (): UserEntityVM => ({
+  personId: 0,
   name: '',
   surname: '',
   telephone: '',

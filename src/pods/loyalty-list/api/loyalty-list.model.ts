@@ -1,4 +1,4 @@
 export interface Loyalty {
-  name: string;
-  points: number;
+  Name: string;
+  Points: number;
 }

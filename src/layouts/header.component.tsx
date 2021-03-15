@@ -26,7 +26,11 @@ export const HeaderComponent: React.FC = () => {
           <p className={classes.format}>
             Hola {login} - Puntos: {points}
           </p>
-          <Button variant="contained" onClick={handleLogout}>
+          <Button
+            variant="contained"
+            onClick={handleLogout}
+            className={classes.button}
+          >
             Salir
           </Button>
         </div>

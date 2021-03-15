@@ -32,3 +32,7 @@ export const text = css`
   font-size: 1.2rem;
   font-family: 'Courier New', Courier, monospace;
 `;
+
+export const hover = css`
+
+`;

@@ -6,21 +6,21 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { getTreatmentsByUser } from './api';
+import { getTreatmentsByUser, Treatment } from './api';
 import * as classes from './treatment.list.styles';
 import { Button } from '@material-ui/core';
-
-const rows = getTreatmentsByUser();
+import { getFormatDate } from 'core/dates';
 
 interface Props {
   onBack: () => void;
+  treatmentHistory: Treatment[];
 }
 
 export const TreatmentListComponent: React.FC<Props> = props => {
-  const { onBack } = props;
+  const { onBack, treatmentHistory } = props;
   return (
     <div className={classes.container}>
-      <h3 style={{ textAlign: 'center' }}>Hola Pepe</h3>
+      <h3 style={{ textAlign: 'center' }}>Historial de tratamientos</h3>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -30,12 +30,14 @@ export const TreatmentListComponent: React.FC<Props> = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.name}>
+            {treatmentHistory.map(treatment => (
+              <TableRow key={treatment.Name}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {treatment.Name}
                 </TableCell>
-                <TableCell align="right">{row.date}</TableCell>
+                <TableCell align="right">
+                  {getFormatDate(treatment.Date)}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -1,4 +1,4 @@
 export interface Treatment {
-  name: string;
-  date: string;
+  Name: string;
+  Date: string;
 }

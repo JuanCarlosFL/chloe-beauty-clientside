@@ -1,10 +1,10 @@
 import * as viewModel from '../register.vm';
+const url = `${process.env.API_URL}/user`;
 
 export const registerUser = async (
   user: viewModel.RegisterVM
 ): Promise<boolean> => {
-  console.log({ user });
-  const response = await fetch(process.env.API_REGISTER, {
+  const response = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(user),
     headers: {
@@ -12,6 +12,5 @@ export const registerUser = async (
     },
   });
   const data = await response.json();
-  console.log(data);
   return data;
 };

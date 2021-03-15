@@ -3,12 +3,13 @@ export const getToken = async () => {
   const data = await response.json();
   return data;
 };
+const url = `${process.env.API_URL}/user`;
 
 export const isValidLogin = async (
   username: string,
   password: string
 ): Promise<boolean> => {
-  const response = await fetch(process.env.API_URL, {
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

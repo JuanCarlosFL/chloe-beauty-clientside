@@ -7,13 +7,12 @@ interface BaseRoutes {
   login: string;
   recoverPassword: string;
   register: string;
-  loyaltyList: string | NavigateFnId;
+  loyaltyList: string;
   treatmentList: string | NavigateFnId;
   menu: string;
 }
 
 interface SwitchRoutes extends BaseRoutes {
-  loyaltyList: string;
   treatmentList: string;
 }
 
@@ -22,18 +21,16 @@ export const switchRoutes: SwitchRoutes = {
   login: '/login',
   recoverPassword: '/recover-password',
   register: '/register',
-  loyaltyList: '/loyalty-list/:id',
+  loyaltyList: '/loyalty-list',
   treatmentList: '/treatment-list/:id',
   menu: '/menu',
 };
 
 interface LinkRoutes extends BaseRoutes {
-  loyaltyList: NavigateFnId;
   treatmentList: NavigateFnId;
 }
 
 export const linkRoutes: LinkRoutes = {
   ...switchRoutes,
-  loyaltyList: id => generatePath(switchRoutes.loyaltyList, { id }),
   treatmentList: id => generatePath(switchRoutes.treatmentList, { id }),
 };

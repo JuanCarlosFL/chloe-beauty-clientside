@@ -9,6 +9,7 @@ export const mapUserFromApiToVm = (
     return viewModel.createEmptyUser();
   } else {
     return {
+      personId: user.PersonId,
       name: user.Person.Name,
       surname: user.Person.Surname,
       telephone: user.Person.Telephone,

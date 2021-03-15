@@ -6,18 +6,18 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { getLoyaltiesByUser } from './api';
+import { Loyalty } from './api';
 import { Button } from '@material-ui/core';
 import * as classes from './loyalty-list.styles';
 
-const rows = getLoyaltiesByUser();
 
 interface Props {
   onBack: () => void;
+  loyalties: Loyalty[];
 }
 
 export const LoyaltyListComponent: React.FC<Props> = props => {
-  const { onBack } = props;
+  const { onBack, loyalties } = props;
   return (
     <div className={classes.container}>
       <h3 style={{ textAlign: 'center' }}>Ofertas</h3>
@@ -30,12 +30,12 @@ export const LoyaltyListComponent: React.FC<Props> = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.name}>
+            {loyalties.map(loyalty => (
+              <TableRow key={loyalty.Name}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {loyalty.Name}
                 </TableCell>
-                <TableCell align="right">{row.points}</TableCell>
+                <TableCell align="right">{loyalty.Points}</TableCell>
               </TableRow>
             ))}
           </TableBody>
