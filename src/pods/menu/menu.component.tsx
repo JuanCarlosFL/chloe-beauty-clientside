@@ -5,7 +5,7 @@ import { UserEntityVM } from './menu.vm';
 import * as classes from './menu.styles';
 import { Link } from 'react-router-dom';
 import { linkRoutes } from 'core/router';
-import SimpleModal from 'pods/appoiment-modal/appiment-modal.component';
+import SimpleModal from 'pods/appoiment-modal/appoiment-modal.component';
 
 interface Props {
   user: UserEntityVM;

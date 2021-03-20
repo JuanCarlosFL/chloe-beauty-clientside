@@ -6,7 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { getTreatmentsByUser, Treatment } from './api';
+import { Treatment } from './api';
 import * as classes from './treatment.list.styles';
 import { Button } from '@material-ui/core';
 import { getFormatDate } from 'core/dates';
@@ -36,7 +36,7 @@ export const TreatmentListComponent: React.FC<Props> = props => {
                   {treatment.Name}
                 </TableCell>
                 <TableCell align="right">
-                  {getFormatDate(treatment.Date)}
+                  { getFormatDate(treatment.Date) }
                 </TableCell>
               </TableRow>
             ))}
