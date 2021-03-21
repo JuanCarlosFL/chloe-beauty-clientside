@@ -33,6 +33,9 @@ export const text = css`
   font-family: 'Courier New', Courier, monospace;
 `;
 
-export const hover = css`
-
+export const button = css`
+  color: #ff69b4;
+  &:hover {
+    background-color: transparent;
+  }
 `;
