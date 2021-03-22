@@ -13,7 +13,6 @@ export const TreatmentListContainer: React.FC = () => {
   const [treatmentHistory, setTreatmentHistory] = useState<Treatment[]>([]);
   const history = useHistory();
   const { id } = useParams<Props>();
-  console.log(id);
 
   const handleLoadData = async () => {
     const treatmentHistory = await getTreatmentsByUser(parseInt(id));

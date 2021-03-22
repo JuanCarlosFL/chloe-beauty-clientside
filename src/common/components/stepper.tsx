@@ -5,6 +5,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { SelectTreatmentContainer } from './selectTreatment';
+import { SelectDateContainer } from './selectDate';
+import { ConfirmAppointmentContainer } from './confirmAppointment';
 
 
 function getSteps() {
@@ -19,15 +21,11 @@ function getStepContent(stepIndex) {
       );
     case 1:
         return (
-            <div>
-                Seleccione fecha y hora
-            </div>
+            <SelectDateContainer />
         );
     case 2:
         return (
-            <div>
-                Compruebe los datos
-            </div>
+            <ConfirmAppointmentContainer />
         );
     default:
       return 'Unknown stepIndex';
@@ -42,8 +40,12 @@ export const CustomStepper: React.FC<Props> = (props) => {
     let {  close } = props;
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
+    const myForm = React.useRef(null);
 
   const handleNext = () => {
+    if (!myForm.current.checkValidity()) {
+      return;
+   }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -60,8 +62,8 @@ export const CustomStepper: React.FC<Props> = (props) => {
           </Step>
         ))}
       </Stepper>
-      <div>
-          <Typography>{getStepContent(activeStep)}</Typography>
+      <form ref={myForm} >
+          <Typography component={'span'} style={{display: 'flex', flexDirection: 'column' ,minHeight: '250px'}}>{getStepContent(activeStep)}</Typography>
           <Button
             variant="contained" color="secondary"
             disabled={activeStep === 0}
@@ -72,15 +74,17 @@ export const CustomStepper: React.FC<Props> = (props) => {
             { activeStep === steps.length - 1 ?
                 <Button 
                     variant="contained" color="primary"
-                    onClick={close}>
+                    onClick={close}
+                    style={{marginLeft: '10px'}}
+                >
                     Cerrar
                 </Button>
                 :
-                <Button variant="contained" color="primary" onClick={handleNext} style={{margin: '5px'}}>
+                <Button variant="contained" color="primary" onClick={handleNext} style={{marginLeft: '10px'}} type="submit">
                     Siguiente
                 </Button>
             }   
-        </div>
+        </form>
     </div>
   );
 }

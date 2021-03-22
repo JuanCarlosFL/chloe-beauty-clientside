@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
+import { SessionContext } from 'core/session-context';
 import { TreatmentForAppointmentVM } from './selectTreatment.model';
 import { makeStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Radio, RadioGroup } from '@material-ui/core';
@@ -21,21 +21,27 @@ interface Props {
 }
 
 export const SelectTreatmentComponent: React.FC<Props> = (props) => {
+  
+  const {updateTreatmentId} = useContext(SessionContext);
     const [value, setValue] = React.useState(1);
     const classes = useStyles();
     const {treatments} = props;
 
     const handleChange = (event) => {
         setValue(parseInt(event.target.value));
-        console.log(event.target.value)
-      };
+        updateTreatmentId(parseInt(event.target.value));
+    };
+
+    useEffect(() => {
+      updateTreatmentId(value);
+    }, [])
 
     return (
         <div className={classes.root}>
             <FormControl component="fieldset" className={classes.formControl}>
                 <RadioGroup aria-label="tratamientos" name="treatments" value={value} onChange={handleChange}>
                     {treatments.map( treatment => {
-                            return <FormControlLabel value={treatment.Id} control={<Radio />} label={treatment.Name} />
+                            return <FormControlLabel key={treatment.Id} value={treatment.Id} control={<Radio />} label={treatment.Name} />
                         })
                     }
                 </RadioGroup>

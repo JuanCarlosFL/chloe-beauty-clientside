@@ -7,7 +7,6 @@ const Alert = (props) => {
 }
 
 export const  CustomAlert = (props) => {
-    console.log(props)
     const [open, setOpen] = useState(false);
     return (
       <Snackbar open={props.open} autoHideDuration={4000} onClose={props.handleClose}>

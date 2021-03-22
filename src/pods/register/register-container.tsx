@@ -21,7 +21,6 @@ export const RegisterContainer: React.FC = () => {
 
   const handleLogin = async (user: RegisterVM) => {
     const isValid: boolean = await registerUser(user);
-    console.log(isValid);
     if (isValid) {
       updateLogin(user.email);
       history.push(linkRoutes.menu);

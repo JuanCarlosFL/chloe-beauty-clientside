@@ -7,11 +7,12 @@ import { createEmptyUser, UserEntityVM } from './menu.vm';
 
 export const MenuContainer: React.FC = () => {
   const [user, setUser] = useState<UserEntityVM>(createEmptyUser());
-  const { login, updatePoints } = useContext(SessionContext);
+  const { login, updatePoints, updatePersonId } = useContext(SessionContext);
 
   const handleLoadData = async () => {
     const apiUser = await getUser(login);
     updatePoints(apiUser.Person.Points);
+    updatePersonId(apiUser.PersonId);
     setUser(mapUserFromApiToVm(apiUser));
   };
 
