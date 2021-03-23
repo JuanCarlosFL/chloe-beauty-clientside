@@ -77,7 +77,7 @@ export const CustomStepper: React.FC<Props> = (props) => {
                     onClick={close}
                     style={{marginLeft: '10px'}}
                 >
-                    Cerrar
+                    Confirmar
                 </Button>
                 :
                 <Button variant="contained" color="primary" onClick={handleNext} style={{marginLeft: '10px'}} type="submit">

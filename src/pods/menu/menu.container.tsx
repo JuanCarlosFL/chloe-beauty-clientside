@@ -5,9 +5,12 @@ import { MenuComponent } from './menu.component';
 import { mapUserFromApiToVm } from './menu.mapper';
 import { createEmptyUser, UserEntityVM } from './menu.vm';
 
+const appointmentUrl = `${process.env.API_URL}/appointment`;
+const availabilityUrl = `${process.env.API_URL}/availability`;
+
 export const MenuContainer: React.FC = () => {
   const [user, setUser] = useState<UserEntityVM>(createEmptyUser());
-  const { login, updatePoints, updatePersonId } = useContext(SessionContext);
+  const { login, updatePoints, updatePersonId, personId, treatmentId, availabilityId } = useContext(SessionContext);
 
   const handleLoadData = async () => {
     const apiUser = await getUser(login);
@@ -16,13 +19,38 @@ export const MenuContainer: React.FC = () => {
     setUser(mapUserFromApiToVm(apiUser));
   };
 
+  const appointment = {
+    personId,
+    treatmentId,
+    availabilityId
+  };
+
+  const saveAppointment = async () => {
+    await fetch(`${appointmentUrl}`, {
+      method: 'POST',
+      body: JSON.stringify(appointment),
+      headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+      },
+    });
+  }
+
+  const deleteAvailability = async () => {
+    await fetch(`${availabilityUrl}/${availabilityId}`, {
+      method: 'DELETE',
+      headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+      },
+    });
+  }
+
   useEffect(() => {
     handleLoadData();
   }, []);
 
   return (
     <>
-      <MenuComponent user={user} />
+      <MenuComponent user={user} saveAppointment={saveAppointment} deleteAvailability={deleteAvailability}/>
     </>
   );
 };

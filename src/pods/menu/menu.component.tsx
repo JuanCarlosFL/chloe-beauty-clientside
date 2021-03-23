@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import { UserEntityVM } from './menu.vm';
@@ -11,12 +11,14 @@ import TabletMacIcon from '@material-ui/icons/TabletMac';
 
 interface Props {
   user: UserEntityVM;
+  saveAppointment: () => void;
+  deleteAvailability: () => void;
 }
 
 
 export const MenuComponent: React.FC<Props> = props => {
-  const { user } = props;
-  const [open, setOpen] = React.useState(false);
+  const { user, saveAppointment, deleteAvailability } = props;
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -24,6 +26,8 @@ export const MenuComponent: React.FC<Props> = props => {
   
   const handleClose = () => {
     setOpen(false);
+    saveAppointment();
+    deleteAvailability();
   };
 
   return (
