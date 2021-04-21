@@ -1,5 +1,5 @@
 import * as viewModel from '../register.vm';
-const url = `${process.env.API_URL}/user`;
+const url = `${process.env.API_URL}/user/createuser`;
 
 export const registerUser = async (
   user: viewModel.RegisterVM
