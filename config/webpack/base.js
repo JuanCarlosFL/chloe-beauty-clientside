@@ -43,7 +43,7 @@ module.exports = merge(
     },
     plugins: [
       new HtmlWebpackPlugin({
-        favicon: 'assets/favicon.ico',
+        favicon: 'assets/img/favicon.ico',
         filename: 'index.html',
         template: 'index.html',
       }),

@@ -3,7 +3,7 @@ import { linkRoutes } from 'core/router';
 import { SessionContext } from 'core/session-context';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import img from '../assets/logo-nombre-chloe.jpeg';
+import img from '../assets/img/logo-nombre-chloe.jpeg';
 import * as classes from './header.styles';
 
 export const HeaderComponent: React.FC = () => {

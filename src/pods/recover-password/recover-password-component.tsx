@@ -1,5 +1,5 @@
 import { Button, Grid, withStyles } from '@material-ui/core';
-import img from '../../assets/logo-imagen-chloe.jpeg';
+import img from '../../assets/img/logo-imagen-chloe.jpeg';
 import { Formik, Form } from 'formik';
 import { TextFieldComponent } from 'common/form';
 import React from 'react';

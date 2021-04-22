@@ -37,7 +37,7 @@ module.exports = merge.strategy({
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif|svg|jpeg)$/,
+        test: /\.(png|jpg|jpeg|gif|svg|jpeg)$/,
         loader: 'file-loader',
         options: {
           name: 'img/[name].[ext]',

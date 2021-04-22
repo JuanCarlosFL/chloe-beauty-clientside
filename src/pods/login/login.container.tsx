@@ -10,12 +10,14 @@ import { CustomAlert } from 'common/components/Alert';
 export const LoginContainer: React.FC = () => {
   const [open, setOpen] = useState(false);
   const history = useHistory();
-  const { updateLogin } = useContext(SessionContext);
+  const { updateLogin, updateToken } = useContext(SessionContext);
 
   const handleLogin = async (login: viewModel.LoginVm) => {
     const isValid = await api.isValidLogin(login.username, login.password);
 
     if (isValid) {
+      const token = await api.getToken(login.username, login.password);
+      updateToken(token);
       updateLogin(login.username);
       history.push(linkRoutes.menu);
     } else {

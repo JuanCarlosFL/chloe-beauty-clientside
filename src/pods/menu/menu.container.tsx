@@ -10,10 +10,10 @@ const availabilityUrl = `${process.env.API_URL}/availability`;
 
 export const MenuContainer: React.FC = () => {
   const [user, setUser] = useState<UserEntityVM>(createEmptyUser());
-  const { login, updatePoints, updatePersonId, personId, treatmentId, availabilityId } = useContext(SessionContext);
+  const { login, updatePoints, updatePersonId, personId, treatmentId, availabilityId, token } = useContext(SessionContext);
 
   const handleLoadData = async () => {
-    const apiUser = await getUser(login);
+    const apiUser = await getUser(login, token);
     updatePoints(apiUser.Person.Points);
     updatePersonId(apiUser.PersonId);
     setUser(mapUserFromApiToVm(apiUser));
@@ -30,7 +30,8 @@ export const MenuContainer: React.FC = () => {
       method: 'POST',
       body: JSON.stringify(appointment),
       headers: { 
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json; charset=UTF-8",
+        'Authorization': `bearer ${token}`
       },
     });
   }
@@ -39,7 +40,8 @@ export const MenuContainer: React.FC = () => {
     await fetch(`${availabilityUrl}/${availabilityId}`, {
       method: 'DELETE',
       headers: { 
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json; charset=UTF-8",
+        'Authorization': `bearer ${token}`
       },
     });
   }

@@ -25,6 +25,12 @@ export const MenuComponent: React.FC<Props> = props => {
   };
   
   const handleClose = () => {
+    console.log("ENTRA EN EL CLOSE");
+    setOpen(false);
+  };
+
+  const confirm = () => {
+    console.log("ENTRA EN EL CONFIRM");
     setOpen(false);
     saveAppointment();
     deleteAvailability();
@@ -41,7 +47,7 @@ export const MenuComponent: React.FC<Props> = props => {
           <p className={classes.text}>Quiero una cita</p>
         </div>
 
-        <SimpleModal open={ open } close={ handleClose }/>
+        <SimpleModal open={ open } close={ handleClose } confirm={ confirm }/>
 
         <Link
           to={`${linkRoutes.treatmentList(user.personId.toString())}`}

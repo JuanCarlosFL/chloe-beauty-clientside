@@ -8,16 +8,24 @@ const availabilityUrl = `${process.env.API_URL}/availability`;
 export const ConfirmAppointmentContainer: React.FC = () => {
     const [treatment, setTreatment] = useState('');
     const [availability, setAvailability] = useState('');
-    const { treatmentId, personId, availabilityId} = useContext(SessionContext)
+    const { treatmentId, personId, availabilityId, token} = useContext(SessionContext)
     
     const getTreatment = async () => {
-        const response = await fetch(`${treatmentUrl}/${treatmentId}`);
+        const response = await fetch(`${treatmentUrl}/${treatmentId}`, {
+            headers: {
+                'Autorization': `bearer ${token}`
+            }
+        });
         const data = await response.json();
         setTreatment(data.Name);
     };
 
     const getAvailability = async () => {
-        const response = await fetch(`${availabilityUrl}/${availabilityId}`);
+        const response = await fetch(`${availabilityUrl}/${availabilityId}`, {
+            headers: {
+                'Autorization': `bearer ${token}`
+            }
+        });
         const data = await response.json();
         setAvailability(data.Date);
     }

@@ -37,7 +37,7 @@ export const RecoverPasswordContainer: React.FC = () => {
   return (
     <>
       <RecoverPasswordComponent onLogin={handleLogin} onCancel={handleCancel} />
-      <CustomAlert message='Usuario o contraseña incorrecta' severity='error' open={open} handleClose={handleClose} />
+      <CustomAlert message='El usuario no existe' severity='error' open={open} handleClose={handleClose} />
     </>
   );
 };

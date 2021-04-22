@@ -2,7 +2,7 @@ import { FormControl, FormControlLabel, MenuItem, Radio, RadioGroup, Select } fr
 import { makeStyles } from '@material-ui/core/styles';
 import { getFormatDate } from 'core/dates';
 import { SessionContext } from 'core/session-context';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AvailabilityVM } from './selectDate.model';
 
 interface Props {
@@ -35,6 +35,7 @@ export const SelectDateComponent: React.FC<Props> = (props) => {
     const handleChange = (event) => {
         const availability = availabilities.filter(e => e.Date === event.target.value)[0];
         setAvailabilityByDate(availability);
+        updateAvailabilityId(availabilities[0].TimesByDate[0].Id);
         setValue(value)
     };
     
@@ -42,7 +43,6 @@ export const SelectDateComponent: React.FC<Props> = (props) => {
         setValue(parseInt(event.target.value));
         updateAvailabilityId(event.target.value);
     }
-
     
     return (
         <>

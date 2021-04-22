@@ -1,9 +1,10 @@
 import { linkRoutes } from 'core/router';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { getTreatmentsByUser } from './api';
 import { TreatmentListComponent } from './treatment-list.component';
 import { Treatment } from './api/treatment-list.model';
+import { SessionContext } from 'core/session-context';
 
 interface Props {
   id: string;
@@ -13,9 +14,10 @@ export const TreatmentListContainer: React.FC = () => {
   const [treatmentHistory, setTreatmentHistory] = useState<Treatment[]>([]);
   const history = useHistory();
   const { id } = useParams<Props>();
+  const { token } = useContext(SessionContext);
 
   const handleLoadData = async () => {
-    const treatmentHistory = await getTreatmentsByUser(parseInt(id));
+    const treatmentHistory = await getTreatmentsByUser(parseInt(id), token);
     setTreatmentHistory(treatmentHistory);
   };
 

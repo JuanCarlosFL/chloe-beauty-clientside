@@ -34,10 +34,11 @@ function getStepContent(stepIndex) {
 
 interface Props {
     close: () => void;
+    confirm: () => void;
 }
 
 export const CustomStepper: React.FC<Props> = (props) => {
-    let {  close } = props;
+    let {  close, confirm } = props;
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
     const myForm = React.useRef(null);
@@ -74,7 +75,7 @@ export const CustomStepper: React.FC<Props> = (props) => {
             { activeStep === steps.length - 1 ?
                 <Button 
                     variant="contained" color="primary"
-                    onClick={close}
+                    onClick={confirm}
                     style={{marginLeft: '10px'}}
                 >
                     Confirmar

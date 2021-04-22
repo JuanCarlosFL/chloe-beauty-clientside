@@ -1,5 +1,6 @@
 import { linkRoutes } from 'core/router';
-import React, { useEffect, useState } from 'react';
+import { SessionContext } from 'core/session-context';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { getLoyalties, Loyalty } from './api';
 import { LoyaltyListComponent } from './loyalty-list.component';
@@ -7,9 +8,10 @@ import { LoyaltyListComponent } from './loyalty-list.component';
 export const LoyaltyListContainer: React.FC = () => {
   const history = useHistory();
   const [loyalties, setLoyalties] = useState<Loyalty[]>([]);
+  const { token } = useContext(SessionContext);
 
   const handleGetLoyalties = async () => {
-    const data: Loyalty[] = await getLoyalties();
+    const data: Loyalty[] = await getLoyalties(token);
     setLoyalties(data);
   };
 

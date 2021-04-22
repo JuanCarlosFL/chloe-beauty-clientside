@@ -41,10 +41,11 @@ const useStyles = makeStyles(theme => ({
 interface Props {
   open: boolean;
   close: () => void;
+  confirm: () => void;
 }
 
 export const SimpleModal: React.FC<Props> = (props) => {
-  const { open, close} = props;
+  const { open, close, confirm} = props;
   const [modalStyle] = React.useState(getModalStyle);
   const classes = useStyles();
 
@@ -58,7 +59,7 @@ export const SimpleModal: React.FC<Props> = (props) => {
       >
         {
           <div style={modalStyle} className={classes.paper}>
-            <CustomStepper close={ close }/>
+            <CustomStepper close={ close } confirm={ confirm }/>
           </div>
         }
       </Modal>

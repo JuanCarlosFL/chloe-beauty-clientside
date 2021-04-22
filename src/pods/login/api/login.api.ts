@@ -1,9 +1,5 @@
-export const getToken = async () => {
-  const response = await fetch(process.env.API_TOKEN);
-  const data = await response.json();
-  return data;
-};
 const url = `${process.env.API_URL}/user`;
+const tokenUrl = `${process.env.API_URL}/api/jwtauth/requesttoken`;
 
 export const isValidLogin = async (
   username: string,
@@ -21,4 +17,19 @@ export const isValidLogin = async (
     return false;
   }
   return data;
+};
+
+export const getToken = async (
+  username: string,
+  password: string
+): Promise<string> => {
+  const accessToken = await fetch(tokenUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username, password }),
+  });
+  const token = await accessToken.json();
+  return token.token;
 };
