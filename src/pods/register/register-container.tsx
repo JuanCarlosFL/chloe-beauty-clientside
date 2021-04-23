@@ -6,11 +6,12 @@ import { RegisterVM } from './register.vm';
 import { registerUser } from './api/register.api';
 import { SessionContext } from 'core/session-context';
 import { CustomAlert } from 'common/components/Alert';
+import * as api from '../login/api/login.api';
 
 export const RegisterContainer: React.FC = () => {
   const [open, setOpen] = useState(false);
   const history = useHistory();
-  const { updateLogin } = useContext(SessionContext);
+  const { updateLogin, updateToken } = useContext(SessionContext);
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway'){
@@ -22,6 +23,8 @@ export const RegisterContainer: React.FC = () => {
   const handleLogin = async (user: RegisterVM) => {
     const isValid: boolean = await registerUser(user);
     if (isValid) {
+      const token = await api.getToken(user.email, user.password);
+      updateToken(token);
       updateLogin(user.email);
       history.push(linkRoutes.menu);
     } else {

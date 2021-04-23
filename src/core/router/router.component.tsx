@@ -9,6 +9,7 @@ import {
   RegisterScene,
   TreatmentListScene,
 } from 'scenes';
+import { AuthRouteComponent } from './authroute';
 
 export const RouterComponent: React.FC = () => {
   return (
@@ -24,9 +25,9 @@ export const RouterComponent: React.FC = () => {
           path={switchRoutes.recoverPassword}
           component={RecoverPasswordScene}
         />
-        <Route path={switchRoutes.menu} component={MenuScene} />
-        <Route path={switchRoutes.loyaltyList} component={LoyaltyListScene} />
-        <Route
+        <AuthRouteComponent path={switchRoutes.menu} component={MenuScene} />
+        <AuthRouteComponent path={switchRoutes.loyaltyList} component={LoyaltyListScene} />
+        <AuthRouteComponent
           path={switchRoutes.treatmentList}
           component={TreatmentListScene}
         />
