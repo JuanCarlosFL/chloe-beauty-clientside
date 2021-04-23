@@ -12,7 +12,7 @@ export const SelectDateContainer = () => {
     const getAvailabilities = async () => {
         const response = await fetch(url, {
             headers: {
-                'Autorization': `bearer ${token}`
+                'Authorization': `bearer ${token}`
             }
         });
         const data = await response.json();

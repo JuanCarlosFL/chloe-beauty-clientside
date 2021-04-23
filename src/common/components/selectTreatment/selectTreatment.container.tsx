@@ -10,9 +10,10 @@ export const SelectTreatmentContainer: React.FC = () => {
     const { token } = useContext(SessionContext);
 
     const getTreatmentsForAppointment = async () => {
+        console.log(url)
         const response = await fetch(url, {
             headers: {
-                'Autorization': `bearer ${token}`
+                'Authorization': `bearer ${token}`
             }
         });
         const data: TreatmentForAppointmentVM[] = await response.json();

@@ -13,7 +13,7 @@ export const ConfirmAppointmentContainer: React.FC = () => {
     const getTreatment = async () => {
         const response = await fetch(`${treatmentUrl}/${treatmentId}`, {
             headers: {
-                'Autorization': `bearer ${token}`
+                'Authorization': `bearer ${token}`
             }
         });
         const data = await response.json();
@@ -23,7 +23,7 @@ export const ConfirmAppointmentContainer: React.FC = () => {
     const getAvailability = async () => {
         const response = await fetch(`${availabilityUrl}/${availabilityId}`, {
             headers: {
-                'Autorization': `bearer ${token}`
+                'Authorization': `bearer ${token}`
             }
         });
         const data = await response.json();
