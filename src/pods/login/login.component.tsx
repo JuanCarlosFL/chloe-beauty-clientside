@@ -51,11 +51,12 @@ export const LoginComponent: React.FC<Props> = props => {
                 <Grid container justify="center">
                   <img src={img} width={200} alt="logo chloe's beauty" />
                 </Grid>
-                <TextFieldComponent name="username" label="Usuario" />
+                <TextFieldComponent name="username" label="Usuario" id="username" />
                 <TextFieldComponent
                   name="password"
                   label="Contraseña"
                   type="password"
+                  id="password"
                 />
                 <ForgotPasswordButton
                   color="primary"
@@ -68,6 +69,7 @@ export const LoginComponent: React.FC<Props> = props => {
                   type="submit"
                   color="primary"
                   variant="contained"
+                  name="Login"
                   style={{ marginTop: '15px' }}
                 >
                   Iniciar sesión
