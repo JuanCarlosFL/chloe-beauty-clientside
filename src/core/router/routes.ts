@@ -15,7 +15,7 @@ interface BaseRoutes {
 interface SwitchRoutes extends BaseRoutes {
   treatmentList: string;
 }
-
+// Estas son las rutas que importa el router component
 export const switchRoutes: SwitchRoutes = {
   root: '/',
   login: '/login',

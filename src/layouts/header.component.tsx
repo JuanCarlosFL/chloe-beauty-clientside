@@ -5,13 +5,13 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import img from '../assets/img/logo-nombre-chloe.jpeg';
 import * as classes from './header.styles';
-
+// Componente que pinta el header del layout
 export const HeaderComponent: React.FC = () => {
   const history = useHistory();
   const { login, updateLogin, points, updatePoints } = useContext(
     SessionContext
   );
-
+  // Función que se ejecuta al pinchar en salir, reinicia el login y redirige al root de la app
   const handleLogout = () => {
     updateLogin('');
     updatePoints(0);

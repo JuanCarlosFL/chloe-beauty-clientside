@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-
+// Estilos para el header y footer de la app
 export const headerFooter = css`
   display: flex;
   padding: 10px;

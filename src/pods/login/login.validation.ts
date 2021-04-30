@@ -1,6 +1,6 @@
 import { ValidationSchema, Validators } from '@lemoncode/fonk';
 import { createFormikValidation } from '@lemoncode/fonk-formik';
-
+// Utilizamos Fonk para las validaciones, en este caso para el username y el password
 const validationSchema: ValidationSchema = {
   field: {
     username: [

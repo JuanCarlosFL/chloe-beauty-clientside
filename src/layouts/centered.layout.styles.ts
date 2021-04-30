@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import { theme } from 'core/theme';
-
+// Estilos para el componente de centrar el layout
 export const root = css`
   display: flex;
   flex-direction: column;

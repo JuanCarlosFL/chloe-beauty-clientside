@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+// El context es donde almacenamos los valores que son comunes a la aplicación y que podemos llamar desde cualquier componente
 interface Context {
   login: string;
   token: string;
@@ -14,7 +14,7 @@ interface Context {
   updateTreatmentId: (value: number) => void;
   updateAvailabilityId: (value: number) => void;
 }
-
+// Creamos el contexto con las variables y funciones para actualizar las variables que necesitamos
 export const SessionContext = React.createContext<Context>({
   login: 'no user',
   token: 'no token',
@@ -53,7 +53,7 @@ export const SessionContext = React.createContext<Context>({
     );
   },
 });
-
+// En el componente lo primero es actualizar los valores de inicio
 export const SessionProvider: React.FC = props => {
   const [login, setLogin] = useState('');
   const [token, setToken] = useState('');
@@ -61,7 +61,7 @@ export const SessionProvider: React.FC = props => {
   const [personId, setPersonId] = useState(0);
   const [treatmentId, setTreatmentId] = useState(0);
   const [availabilityId, setAvailabilityId] = useState(0);
-
+  // El provider es el que envolverá al componente app para que todos los componentes que desciendan de éste podrán acceder a estos datos
   return (
     <SessionContext.Provider
       value={{ 

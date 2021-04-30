@@ -1,3 +1,4 @@
+// Interface para tipar los tratamientos
 export interface TreatmentForAppointmentVM {
     Id: number;
     Duration: number;
@@ -6,6 +7,7 @@ export interface TreatmentForAppointmentVM {
     Points?: number;
 }
 
+// Función para crear un tratamiento vacío
 export const createEmptyTreatment = (): TreatmentForAppointmentVM[] => ([
     {
         Id: 0,

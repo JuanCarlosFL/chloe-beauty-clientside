@@ -1,7 +1,7 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
 import * as classes from './header.styles';
-
+// Componente que pinta el footer de la página
 export const FooterComponent: React.FC = () => {
   return (
     <div>

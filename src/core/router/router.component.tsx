@@ -10,7 +10,8 @@ import {
   TreatmentListScene,
 } from 'scenes';
 import { AuthRouteComponent } from './authroute';
-
+// Componente que usa React Router Dom para el ruteo de la aplicación
+// Según el path pinta el componente de la escena correspondiente
 export const RouterComponent: React.FC = () => {
   return (
     <Router>

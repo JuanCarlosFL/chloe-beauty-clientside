@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { CustomStepper } from 'common/components/stepper';
-
+// Todas estas funciones pertenecen a la modal de Material UI
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -43,7 +43,7 @@ interface Props {
   close: () => void;
   confirm: () => void;
 }
-
+// Compoente para la modal, es de Material UI y dentro pinta el componente stepper
 export const SimpleModal: React.FC<Props> = (props) => {
   const { open, close, confirm} = props;
   const [modalStyle] = React.useState(getModalStyle);

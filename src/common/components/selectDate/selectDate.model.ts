@@ -1,3 +1,4 @@
+// Interface para tipar la disponibilidad que nos traemos de la api
 export interface AvailabilityVM {
     Date: string;
     TimesByDate: [
@@ -8,6 +9,7 @@ export interface AvailabilityVM {
     ]
 }
 
+// Función para crear un array de dispobilidades vacía
 export const createEmptyAvailability = (): AvailabilityVM[] => {
     return [
         {
@@ -20,6 +22,7 @@ export const createEmptyAvailability = (): AvailabilityVM[] => {
     ]
 }
 
+// Función para crear una disponibilidad vacío
 export const createEmptyAvailabilityItem = (): AvailabilityVM => {
     return {
             Date: '',

@@ -8,11 +8,12 @@ import { SelectTreatmentContainer } from './selectTreatment';
 import { SelectDateContainer } from './selectDate';
 import { ConfirmAppointmentContainer } from './confirmAppointment';
 
-
+// Stepper de material ui, creamos un array con los textos
 function getSteps() {
   return ['Seleccione el tratamiento', 'Seleccione fecha y hora', 'Compruebe los datos'];
 }
 
+// Según el paso en el que estemos pintamos el componente correspondiente
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
@@ -31,29 +32,33 @@ function getStepContent(stepIndex) {
       return 'Unknown stepIndex';
   }
 }
-
+// Interface para tipar las props
 interface Props {
     close: () => void;
     confirm: () => void;
 }
 
 export const CustomStepper: React.FC<Props> = (props) => {
-    let {  close, confirm } = props;
-    const [activeStep, setActiveStep] = React.useState(0);
-    const steps = getSteps();
-    const myForm = React.useRef(null);
-
+  // Guardamos las funciones que recibimos por props
+  let {  close, confirm } = props;
+  // Empezamos en el paso 0
+  const [activeStep, setActiveStep] = React.useState(0);
+  // Guardamos el array con los textos
+  const steps = getSteps();
+  // Creamos una referencia para el formulario
+  const myForm = React.useRef(null);
+  // Función que maneja  el avanzar en el step si no hay errores del formulario
   const handleNext = () => {
     if (!myForm.current.checkValidity()) {
       return;
    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
-
+  // Función que retrocede en el step
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
+  // Componente que pinta los pasos según se vaya avanzando o retrocediendo
   return (
     <div>
       <Stepper activeStep={activeStep} alternativeLabel>
@@ -72,6 +77,7 @@ export const CustomStepper: React.FC<Props> = (props) => {
           >
             Volver
           </Button>
+            {/* Si es el último paso el botón mostrará Confirmar sino mostrará Siguiente */}
             { activeStep === steps.length - 1 ?
                 <Button 
                     variant="contained" color="primary"
