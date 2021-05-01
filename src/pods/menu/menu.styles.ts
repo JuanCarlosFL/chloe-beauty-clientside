@@ -23,7 +23,7 @@ export const items = css`
   align-items: center;
   text-decoration: none;
   width: 33%;
-  color: #ff69b4;
+  color: #990066;
 `;
 
 export const text = css`
@@ -34,7 +34,7 @@ export const text = css`
 `;
 
 export const button = css`
-  color: #ff69b4;
+  color: #990066;
   &:hover {
     background-color: transparent;
   }

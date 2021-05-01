@@ -1,3 +1,4 @@
+// Modelo que vamos a usar en la parte cliente
 export interface UserEntityVM {
   personId: number;
   name: string;
@@ -12,7 +13,7 @@ export interface UserEntityVM {
   contactHow: string;
   role: Array<number>;
 }
-
+// Función para crear un usuario vacío
 export const createEmptyUser = (): UserEntityVM => ({
   personId: 0,
   name: '',

@@ -10,14 +10,16 @@ import { Loyalty } from './api';
 import { Button } from '@material-ui/core';
 import * as classes from './loyalty-list.styles';
 
-
+// Interface para tipar las props
 interface Props {
   onBack: () => void;
   loyalties: Loyalty[];
 }
 
 export const LoyaltyListComponent: React.FC<Props> = props => {
+  // Guardamos la función para volver y la colección de ofertas recibidas por props
   const { onBack, loyalties } = props;
+  // Pintamos una tabla con el contenido de la colección
   return (
     <div className={classes.container}>
       <h3 style={{ textAlign: 'center' }}>Ofertas</h3>
@@ -30,6 +32,7 @@ export const LoyaltyListComponent: React.FC<Props> = props => {
             </TableRow>
           </TableHead>
           <TableBody>
+            {/* Iteramos la colección para pintar cada fila de la tabla */}
             {loyalties.map(loyalty => (
               <TableRow key={loyalty.Name}>
                 <TableCell component="th" scope="row">

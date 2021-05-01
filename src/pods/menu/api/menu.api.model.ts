@@ -1,3 +1,4 @@
+// Interface para tipar el json traído de la api
 export interface UserEntity {
   UserId: number;
   UserName: string;

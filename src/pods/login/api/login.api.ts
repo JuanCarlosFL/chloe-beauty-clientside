@@ -3,10 +3,7 @@ const url = `${process.env.API_URL}/user`;
 const tokenUrl = `${process.env.API_URL}/api/jwtauth/requesttoken`;
 
 // Función que valida si el login es correcto
-export const isValidLogin = async (
-  username: string,
-  password: string
-): Promise<boolean> => {
+export const isValidLogin = async (username: string, password: string): Promise<boolean> => {
   // Llamamos al endpoint pasándole el username y el password
   const response = await fetch(url, {
     method: 'POST',
@@ -25,10 +22,7 @@ export const isValidLogin = async (
 };
 
 // Función que obtiene el token
-export const getToken = async (
-  username: string,
-  password: string
-): Promise<string> => {
+export const getToken = async (username: string, password: string): Promise<string> => {
   // Llamamos al endpoint del token pasándole el username y el password
   const accessToken = await fetch(tokenUrl, {
     method: 'POST',

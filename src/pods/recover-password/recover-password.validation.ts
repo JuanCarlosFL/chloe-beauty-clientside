@@ -1,7 +1,9 @@
 import { ValidationSchema, Validators } from '@lemoncode/fonk';
 import { createFormikValidation } from '@lemoncode/fonk-formik';
 import { matchField } from '@lemoncode/fonk-match-field-validator';
-
+// Usamos la librería fonk para validar el formualario
+// Los campos son obligatorios, el username tiene que tener formato de email
+// Y las contraseñas deben coincidir
 const validationSchema: ValidationSchema = {
   field: {
     username: [

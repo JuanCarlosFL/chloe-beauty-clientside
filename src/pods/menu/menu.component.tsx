@@ -8,32 +8,35 @@ import { linkRoutes } from 'core/router';
 import { SimpleModal } from 'pods/appoiment-modal/appoiment-modal.component';
 import { Button } from '@material-ui/core';
 import TabletMacIcon from '@material-ui/icons/TabletMac';
-
+// Interface para tipar las props
 interface Props {
   user: UserEntityVM;
   saveAppointment: () => void;
   deleteAvailability: () => void;
 }
 
-
 export const MenuComponent: React.FC<Props> = props => {
+  // Guardamos lo que nos viene por props
   const { user, saveAppointment, deleteAvailability } = props;
+  // Creamos una vaiable a false para la ventana modal
   const [open, setOpen] = useState(false);
-
+  // Función que abrirá la ventana modal
   const handleOpen = () => {
     setOpen(true);
   };
-  
+  // Función que cerrará  la ventana modal
   const handleClose = () => {
     setOpen(false);
   };
-
+  // Función que cerrará la ventana modal, guardará la cita y la borrará de la disponibilidad cuando
+  // El cliente confirme la cita
   const confirm = () => {
     setOpen(false);
     saveAppointment();
     deleteAvailability();
   };
-
+  // Componente que pinta el menú usando botenes e inconos de Material UI
+  // Y usando la rutas para redirigir al componente correspondiente
   return (
     <div className={classes.menu}>
       <div className={classes.menuBody}>

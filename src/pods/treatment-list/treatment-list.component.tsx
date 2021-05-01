@@ -10,14 +10,16 @@ import { Treatment } from './api';
 import * as classes from './treatment.list.styles';
 import { Button } from '@material-ui/core';
 import { getFormatDate } from 'core/dates';
-
+// Interface para tipar las props
 interface Props {
   onBack: () => void;
   treatmentHistory: Treatment[];
 }
 
 export const TreatmentListComponent: React.FC<Props> = props => {
+  // Guardamos la función para volver y la colección recibida por props
   const { onBack, treatmentHistory } = props;
+  // Pintamos una tabla con el contenido de la colección
   return (
     <div className={classes.container}>
       <h3 style={{ textAlign: 'center' }}>Historial de tratamientos</h3>

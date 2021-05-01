@@ -1,7 +1,7 @@
 import * as apiModel from './api/menu.api.model';
 import { mapUserFromApiToVm } from './menu.mapper';
 import * as viewModel from './menu.vm';
-
+// Batería de test para comprobar que no hay errores al mapear datos de la api al viewmodel
 describe('mapper specs', () => {
   it('should return empty user when it feeds undefined', () => {
     // Arrange

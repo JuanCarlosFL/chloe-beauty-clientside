@@ -5,7 +5,7 @@ import { TextFieldComponent } from 'common/form';
 import React from 'react';
 import { createEmptyLogin, RecoverPasswordVM } from './recover-password.vm';
 import { formValidation } from './recover-password.validation';
-
+// Cambiamos los estilos del botón de material ui
 const CancelButton = withStyles(() => ({
   root: {
     backgroundColor: '#bb2124',
@@ -14,15 +14,16 @@ const CancelButton = withStyles(() => ({
     },
   },
 }))(Button);
-
+// Tipamos las props
 interface Props {
   onLogin: (login: RecoverPasswordVM) => void;
   onCancel: () => void;
 }
 
 export const RecoverPasswordComponent: React.FC<Props> = props => {
+  // Almacenamos las funciones que vienen por props
   const { onLogin, onCancel } = props;
-
+  // Mostramos el formulario de recuperar la contraseña
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Grid
@@ -32,6 +33,8 @@ export const RecoverPasswordComponent: React.FC<Props> = props => {
         justify="center"
         style={{ padding: '10' }}
       >
+        {/* Iniciamos el formulario con un login vacío indicando la función a ejecutar al hacer submit y 
+        la función de validación */}
         <Formik
           onSubmit={onLogin}
           initialValues={createEmptyLogin()}
